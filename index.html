@@ -1,16 +1,60 @@
 <!DOCTYPE html>
-<html>
+<html lang="zh">
 <head>
-    <title>我的第一个网页</title>
+    <meta charset="UTF-8">
+    <title>Sramei's Space</title>
     <style>
-        body { font-family: sans-serif; text-align: center; padding-top: 50px; }
-        h1 { color: #2c3e50; }
-        button { padding: 10px 20px; cursor: pointer; }
+        body {
+            background-color: #000; /* 极客黑 */
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            overflow: hidden;
+        }
+
+        h1 {
+            font-size: 3rem;
+            background: linear-gradient(90deg, #007cf0, #00dfd8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes glow {
+            from { text-shadow: 0 0 10px #007cf0; }
+            to { text-shadow: 0 0 30px #00dfd8; }
+        }
+
+        /* 这是一个简单的 JavaScript 互动预留 */
+        .cursor-blob {
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            background: rgba(0, 124, 240, 0.2);
+            filter: blur(80px);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: -1;
+        }
     </style>
 </head>
 <body>
-    <h1>你好，世界！</h1>
-    <p>这是我亲手写代码生成的网页。</p>
-    <button onclick="alert('你点击了按钮！')">点我试试</button>
+    <div class="cursor-blob" id="blob"></div>
+    <h1>SRAMEI.COM</h1>
+    <p>正在学习如何通过代码改变世界...</p>
+    
+    <script>
+        // 让背景的蓝色光晕跟着鼠标走
+        const blob = document.getElementById('blob');
+        window.onmousemove = e => {
+            blob.style.left = `${e.clientX - 100}px`;
+            blob.style.top = `${e.clientY - 100}px`;
+        }
+    </script>
 </body>
 </html>
